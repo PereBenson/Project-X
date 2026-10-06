@@ -1,0 +1,848 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VERVE — Creator Economy & Brand Marketplace</title>
+  <meta name="description" content="The premier creator monetization platform. Publish content, showcase high-converting portfolios, and connect with brands for lucrative sponsored partnerships and escrow-backed contracts.">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⚡</text></svg>">
+</head>
+<body>
+
+  <!-- ======================================================================
+       APP HEADER & NAVIGATION
+       ====================================================================== -->
+  <header class="app-header">
+    <div class="header-container">
+      
+      <!-- Brand Logo -->
+      <a href="#marketplace" class="logo-wrapper" id="brandLogo">
+        <div class="logo-icon-pulse">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
+          </svg>
+        </div>
+        <span class="logo-text">VERVE</span>
+        <span class="logo-tag">Pro</span>
+      </a>
+
+      <!-- Primary Navigation Tabs -->
+      <nav class="main-nav" aria-label="Main Navigation">
+        <button class="nav-tab-btn active" data-tab="marketplace" id="navMarketplace">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"></polygon></svg>
+          Marketplace
+        </button>
+        <button class="nav-tab-btn" data-tab="feed" id="navFeed">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><circle cx="8.5" cy="8.5" r="1.5"></circle><polyline points="21 15 16 10 5 21"></polyline></svg>
+          Feed & Drops
+        </button>
+        <button class="nav-tab-btn" data-tab="portfolio" id="navPortfolio">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+          Creator Studio
+        </button>
+        <button class="nav-tab-btn" data-tab="deals" id="navDeals">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"></path><rect x="8" y="2" width="8" height="4" rx="1" ry="1"></rect></svg>
+          Brand Deals
+          <span class="nav-counter" id="activeDealsCountPill">2</span>
+        </button>
+        <button class="nav-tab-btn" data-tab="wallet" id="navWallet">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"></line><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
+          Monetization
+        </button>
+      </nav>
+
+      <!-- Right Header Actions (Role Switcher & Wallet Pill) -->
+      <div class="header-actions">
+        
+        <!-- Interactive Role Switcher -->
+        <div class="role-switcher-card" title="Switch active viewpoint">
+          <button class="role-btn active" id="btnRoleCreator" data-role="creator">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9"></path><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path></svg>
+            Creator View
+          </button>
+          <button class="role-btn" id="btnRoleBrand" data-role="brand">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path></svg>
+            Brand View
+          </button>
+        </div>
+
+        <!-- Quick Live Wallet Balance -->
+        <div class="wallet-pill" id="quickWalletPill" title="View Earnings & Withdraw">
+          <span class="wallet-pill-icon">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"></circle><path d="M12 6v12M15 9.5H10.5a2 2 0 0 0 0 4h3a2 2 0 0 1 0 4H9"></path></svg>
+          </span>
+          <div>
+            <div class="wallet-pill-label" id="walletPillLabel">Available</div>
+            <div class="wallet-pill-amount" id="quickWalletBalance">$4,850.00</div>
+          </div>
+        </div>
+
+        <!-- Active User Badge -->
+        <div class="user-profile-badge" id="userProfileBadge">
+          <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=400&q=80" alt="Avatar" class="user-profile-avatar" id="headerUserAvatar">
+          <div class="user-profile-meta">
+            <span class="user-profile-name" id="headerUserName">Elena Vance</span>
+            <span class="user-profile-role" id="headerUserRole">Top Creator</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </header>
+
+  <!-- ======================================================================
+       MAIN CONTENT CONTAINER
+       ====================================================================== -->
+  <main class="main-wrapper">
+
+    <!-- ------------------------------------------------------------------
+         1. MARKETPLACE TAB (Brand Talent Discovery)
+         ------------------------------------------------------------------ -->
+    <section class="tab-pane active" id="pane-marketplace" aria-labelledby="navMarketplace">
+      
+      <!-- Hero Banner -->
+      <div class="marketplace-hero">
+        <div class="hero-content">
+          <div class="hero-pill">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+            Verified Talent & Escrow-Protected Marketplace
+          </div>
+          <h1 class="hero-title">
+            Hire World-Class Creators.<br>
+            <span>Drive Measurable Brand ROI.</span>
+          </h1>
+          <p class="hero-subtitle">
+            Partner with vetted digital creators across UGC, 4K cinema video, 3D motion, and high-converting commercial reels. Escrow deposits ensure you only pay when deliverables are approved.
+          </p>
+
+          <div class="hero-stats-row">
+            <div class="hero-stat-item">
+              <span class="hero-stat-val">$2.8M+</span>
+              <span class="hero-stat-label">Paid to Creators</span>
+            </div>
+            <div class="hero-stat-item">
+              <span class="hero-stat-val">1,480+</span>
+              <span class="hero-stat-label">Successful Collabs</span>
+            </div>
+            <div class="hero-stat-item">
+              <span class="hero-stat-val">4.95 ★</span>
+              <span class="hero-stat-label">Avg. Campaign Rating</span>
+            </div>
+            <div class="hero-stat-item">
+              <span class="hero-stat-val">100%</span>
+              <span class="hero-stat-label">Escrow Protected</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Filter & Search Toolbar -->
+      <div class="toolbar-container">
+        <!-- Search Input -->
+        <div class="search-box-wrapper">
+          <svg class="search-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+          <input type="text" id="marketplaceSearchInput" class="search-input" placeholder="Search creators by name, niche, skill or handle...">
+        </div>
+
+        <!-- Category Filter Chips -->
+        <div class="filter-pills-row" id="nicheFiltersRow">
+          <button class="filter-chip active" data-niche="all">All Niches</button>
+          <button class="filter-chip" data-niche="Tech & AI">Tech & AI</button>
+          <button class="filter-chip" data-niche="Fashion & Beauty">Fashion & Beauty</button>
+          <button class="filter-chip" data-niche="Lifestyle">Lifestyle</button>
+          <button class="filter-chip" data-niche="Gaming & 3D">Gaming & 3D</button>
+          <button class="filter-chip" data-niche="Fitness & Wellness">Fitness & Wellness</button>
+        </div>
+
+        <!-- Sorting -->
+        <div style="display: flex; align-items: center; gap: 0.5rem;">
+          <select id="marketplaceSortSelect" class="filter-sort-select">
+            <option value="rating">Highest Rated ★</option>
+            <option value="followers">Largest Audience</option>
+            <option value="price-low">Starting Rate: Low to High</option>
+            <option value="price-high">Starting Rate: High to Low</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Creators Grid -->
+      <div class="creators-grid" id="creatorsGridContainer">
+        <!-- Populated dynamically via JS -->
+      </div>
+    </section>
+
+    <!-- ------------------------------------------------------------------
+         2. FEED & DROPS TAB (Social Drops, Unlocks & Community)
+         ------------------------------------------------------------------ -->
+    <section class="tab-pane" id="pane-feed" aria-labelledby="navFeed">
+      <div class="feed-layout">
+        
+        <!-- Main Feed Stream -->
+        <div class="feed-main-col">
+          
+          <!-- Post Composer (For Creators) -->
+          <div class="composer-card" id="feedComposerCard">
+            <div class="composer-header">
+              <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=400&q=80" alt="Avatar" class="composer-avatar" id="composerAvatar">
+              <div class="composer-inputs">
+                <input type="text" id="composerPostTitle" class="composer-title-input" placeholder="Post Title or Drop Headline (e.g. Behind The Scenes / New LUT Pack)">
+                <textarea id="composerPostContent" class="composer-textarea" placeholder="Share your creative process, case study insights, or release exclusive digital assets for backers..."></textarea>
+              </div>
+            </div>
+
+            <!-- Composer Tool Options -->
+            <div class="composer-options-row">
+              <div class="composer-attach-tools">
+                <button type="button" class="attach-btn" id="btnComposerAddMedia">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><circle cx="8.5" cy="8.5" r="1.5"></circle><polyline points="21 15 16 10 5 21"></polyline></svg>
+                  Media Image
+                </button>
+                <div class="paywall-toggle-wrap">
+                  <label style="display: flex; align-items: center; gap: 0.35rem; cursor: pointer;">
+                    <input type="checkbox" id="composerPaywallCheck" class="paywall-toggle-input">
+                    <span>🔒 Lock Post ($)</span>
+                  </label>
+                  <input type="number" id="composerUnlockPrice" placeholder="$10" min="1" max="500" value="10" style="display: none; width: 65px; padding: 0.2rem 0.4rem; background: rgba(14,21,38,0.8); border: 1px solid var(--border-subtle); color: white; border-radius: 4px; font-size: 0.8rem;">
+                </div>
+              </div>
+
+              <button class="btn btn-primary btn-sm" id="btnPublishPost">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
+                Publish Drop
+              </button>
+            </div>
+          </div>
+
+          <!-- Posts Stream -->
+          <div class="posts-stream" id="postsStreamContainer">
+            <!-- Dynamically populated via JS -->
+          </div>
+        </div>
+
+        <!-- Feed Sidebar (Top Creators & Tips) -->
+        <aside class="feed-sidebar">
+          <div class="sidebar-widget">
+            <h3 class="widget-title">
+              <span>Trending Creators</span>
+              <span class="badge badge-emerald">Live</span>
+            </h3>
+            <div id="sidebarTrendingCreatorsList">
+              <!-- Dynamically populated -->
+            </div>
+          </div>
+
+          <div class="sidebar-widget">
+            <h3 class="widget-title">Why Monetize on Verve?</h3>
+            <ul style="list-style: none; display: flex; flex-direction: column; gap: 0.85rem; font-size: 0.85rem; color: #cbd5e1;">
+              <li style="display: flex; gap: 0.5rem;">
+                <span style="color: var(--brand-emerald);">✓</span>
+                <span><strong>Instant Escrow Protection:</strong> Brands fund upfront before you shoot.</span>
+              </li>
+              <li style="display: flex; gap: 0.5rem;">
+                <span style="color: var(--brand-indigo);">✓</span>
+                <span><strong>Direct Viewer Tips:</strong> Supporters can tip directly on any post.</span>
+              </li>
+              <li style="display: flex; gap: 0.5rem;">
+                <span style="color: var(--brand-amber);">✓</span>
+                <span><strong>Paywalled Assets:</strong> Sell presets, LUTs, and guides behind unlock tiers.</span>
+              </li>
+            </ul>
+          </div>
+        </aside>
+
+      </div>
+    </section>
+
+    <!-- ------------------------------------------------------------------
+         3. CREATOR PORTFOLIO & STUDIO TAB
+         ------------------------------------------------------------------ -->
+    <section class="tab-pane" id="pane-portfolio" aria-labelledby="navPortfolio">
+      
+      <!-- Creator Profile Banner & Identity Header -->
+      <div class="portfolio-hero-banner" id="portfolioHeroBanner">
+        <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=1200&q=80" alt="Cover" class="profile-cover-img" id="studioCoverImage">
+        
+        <div class="profile-main-meta">
+          <div class="profile-avatar-row">
+            <div class="profile-avatar-wrap">
+              <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=400&q=80" alt="Elena Vance" class="profile-avatar-img" id="studioAvatarImage">
+              <div class="creator-verified-icon">✓</div>
+            </div>
+
+            <!-- Profile Action Buttons -->
+            <div class="profile-actions-group">
+              <button class="btn btn-secondary btn-sm" id="btnStudioAddProject">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+                + Add Portfolio Work
+              </button>
+              <button class="btn btn-secondary btn-sm" id="btnStudioAddService">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
+                + Add Service
+              </button>
+              <button class="btn btn-primary" id="btnStudioDirectHire">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M16 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+                Employ Services
+              </button>
+            </div>
+          </div>
+
+          <div class="profile-name-row">
+            <h2 class="profile-display-name" id="studioDisplayName">Elena Vance</h2>
+            <span class="badge badge-primary" id="studioLocationBadge">San Francisco & Remote</span>
+            <span class="creator-rating-pill" id="studioRatingPill">★ 4.96 (42 reviews)</span>
+          </div>
+
+          <p class="profile-bio-text" id="studioBioText">
+            Award-winning digital creator and commercial storyteller. I help consumer tech, productivity apps, and modern lifestyle brands turn viewers into lifelong customers through authentic, cinematic short-form content.
+          </p>
+
+          <div class="profile-tags-badges" id="studioBadgesRow">
+            <!-- Badges loaded dynamically -->
+          </div>
+
+          <div class="profile-stats-bar">
+            <div class="profile-stat-box">
+              <span class="profile-stat-num" id="studioFollowersCount">520K</span>
+              <span class="profile-stat-label">Cross-Platform Reach</span>
+            </div>
+            <div class="profile-stat-box">
+              <span class="profile-stat-num" id="studioImpressionsCount">38.5M</span>
+              <span class="profile-stat-label">Total Impressions</span>
+            </div>
+            <div class="profile-stat-box">
+              <span class="profile-stat-num" id="studioAvgEngagement">5.8%</span>
+              <span class="profile-stat-label">Avg. Engagement</span>
+            </div>
+            <div class="profile-stat-box">
+              <span class="profile-stat-num" id="studioCompletedDeals">64</span>
+              <span class="profile-stat-label">Brand Deals Delivered</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Studio Sub-Tabs -->
+      <nav class="portfolio-subtabs-nav" aria-label="Studio Sub Navigation">
+        <button class="subtab-btn active" data-subtab="work" id="subtabBtnWork">Selected Work & Case Studies</button>
+        <button class="subtab-btn" data-subtab="services" id="subtabBtnServices">Services & Packages</button>
+        <button class="subtab-btn" data-subtab="reviews" id="subtabBtnReviews">Verified Brand Testimonials</button>
+      </nav>
+
+      <!-- Subtab Content: Portfolio Projects Grid -->
+      <div class="subtab-pane active" id="subtab-work">
+        <div class="portfolio-work-grid" id="portfolioProjectsGrid">
+          <!-- Populated dynamically via JS -->
+        </div>
+      </div>
+
+      <!-- Subtab Content: Services & Rates -->
+      <div class="subtab-pane" id="subtab-services" style="display: none;">
+        <div class="services-packages-grid" id="servicesPackagesGrid">
+          <!-- Populated dynamically via JS -->
+        </div>
+      </div>
+
+      <!-- Subtab Content: Reviews & Feedback -->
+      <div class="subtab-pane" id="subtab-reviews" style="display: none;">
+        <div class="reviews-grid" id="studioReviewsGrid">
+          <!-- Populated dynamically via JS -->
+        </div>
+      </div>
+
+    </section>
+
+    <!-- ------------------------------------------------------------------
+         4. BRAND DEALS & ESCROW WORKFLOW TAB
+         ------------------------------------------------------------------ -->
+    <section class="tab-pane" id="pane-deals" aria-labelledby="navDeals">
+      
+      <!-- Deals Header & Status Filter -->
+      <div class="deals-dashboard-header">
+        <div>
+          <h2 style="font-size: 1.85rem; font-weight: 800; margin-bottom: 0.35rem;">Brand Deals & Escrow Contracts</h2>
+          <p style="font-size: 0.9rem; color: var(--text-muted);">Manage active campaign milestones, approve deliverables, and release secure funds.</p>
+        </div>
+
+        <div style="display: flex; gap: 0.75rem; align-items: center;">
+          <div class="deals-filter-nav" id="dealsFilterNav">
+            <button class="deal-filter-btn active" data-deal-filter="all">All Deals</button>
+            <button class="deal-filter-btn" data-deal-filter="pending_approval">Pending Offer</button>
+            <button class="deal-filter-btn" data-deal-filter="in_progress">In Progress</button>
+            <button class="deal-filter-btn" data-deal-filter="under_review">Under Review</button>
+            <button class="deal-filter-btn" data-deal-filter="completed">Completed</button>
+          </div>
+
+          <button class="btn btn-primary btn-sm" id="btnCreateNewProposal">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+            + Hire Creator
+          </button>
+        </div>
+      </div>
+
+      <!-- Deals Stack -->
+      <div class="deals-stack" id="dealsStackContainer">
+        <!-- Dynamically populated via JS -->
+      </div>
+    </section>
+
+    <!-- ------------------------------------------------------------------
+         5. MONETIZATION DASHBOARD & WALLET TAB
+         ------------------------------------------------------------------ -->
+    <section class="tab-pane" id="pane-wallet" aria-labelledby="navWallet">
+      
+      <!-- Header -->
+      <div style="display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 2rem; flex-wrap: wrap; gap: 1rem;">
+        <div>
+          <h2 style="font-size: 1.85rem; font-weight: 800; margin-bottom: 0.35rem;">Creator Earnings & Financials</h2>
+          <p style="font-size: 0.9rem; color: var(--text-muted);">Real-time tracking of brand deals, viewer tips, paywalled content unlocks, and instant payouts.</p>
+        </div>
+
+        <button class="btn btn-emerald" id="btnRequestWithdrawal">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+          Withdraw Available Funds
+        </button>
+      </div>
+
+      <!-- KPI Summary Cards -->
+      <div class="wallet-stats-grid">
+        <div class="kpi-card">
+          <div class="kpi-card-glow" style="background: rgba(16, 185, 129, 0.25);"></div>
+          <span class="kpi-title">Available for Payout</span>
+          <span class="kpi-value" id="kpiAvailableBalance">$4,850.00</span>
+          <span class="kpi-sub positive">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline><polyline points="17 6 23 6 23 12"></polyline></svg>
+            Ready for instant bank transfer
+          </span>
+        </div>
+
+        <div class="kpi-card">
+          <div class="kpi-card-glow" style="background: rgba(99, 102, 241, 0.25);"></div>
+          <span class="kpi-title">Held in Escrow</span>
+          <span class="kpi-value" id="kpiInEscrow">$1,300.00</span>
+          <span class="kpi-sub" style="color: #a5b4fc;">
+            2 active contracts in progress
+          </span>
+        </div>
+
+        <div class="kpi-card">
+          <div class="kpi-card-glow" style="background: rgba(245, 158, 11, 0.25);"></div>
+          <span class="kpi-title">Total Lifetime Earned</span>
+          <span class="kpi-value" id="kpiTotalEarned">$14,820.00</span>
+          <span class="kpi-sub positive">
+            +32% vs previous quarter
+          </span>
+        </div>
+
+        <div class="kpi-card">
+          <div class="kpi-card-glow" style="background: rgba(6, 182, 212, 0.25);"></div>
+          <span class="kpi-title">Completed Collabs</span>
+          <span class="kpi-value" id="kpiCompletedDeals">64</span>
+          <span class="kpi-sub">
+            100% on-time delivery rate
+          </span>
+        </div>
+      </div>
+
+      <!-- Earnings Chart Visual -->
+      <div class="chart-card">
+        <div class="chart-header">
+          <div>
+            <h3 class="chart-title">Revenue Trajectory (Past 6 Months)</h3>
+            <span style="font-size: 0.8rem; color: var(--text-dim);">Monthly revenue breakdown across brand partnerships & creator drops</span>
+          </div>
+          <div class="badge badge-emerald">Consistent Growth</div>
+        </div>
+
+        <!-- Dynamic Chart Bars -->
+        <div class="chart-bars-wrap">
+          <div class="chart-bar-col">
+            <div class="chart-bar" style="height: 45%;" title="May: $1,850"></div>
+            <span class="chart-bar-label">May</span>
+          </div>
+          <div class="chart-bar-col">
+            <div class="chart-bar" style="height: 60%;" title="Jun: $2,400"></div>
+            <span class="chart-bar-label">Jun</span>
+          </div>
+          <div class="chart-bar-col">
+            <div class="chart-bar" style="height: 75%;" title="Jul: $3,100"></div>
+            <span class="chart-bar-label">Jul</span>
+          </div>
+          <div class="chart-bar-col">
+            <div class="chart-bar" style="height: 85%;" title="Aug: $3,650"></div>
+            <span class="chart-bar-label">Aug</span>
+          </div>
+          <div class="chart-bar-col">
+            <div class="chart-bar" style="height: 92%;" title="Sep: $4,200"></div>
+            <span class="chart-bar-label">Sep</span>
+          </div>
+          <div class="chart-bar-col">
+            <div class="chart-bar" style="height: 100%; background: linear-gradient(180deg, var(--brand-emerald) 0%, rgba(16,185,129,0.3) 100%);" title="Oct (Current): $4,850"></div>
+            <span class="chart-bar-label">Oct</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Transactions Ledger Table -->
+      <div class="transactions-card">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.25rem;">
+          <h3 style="font-size: 1.15rem; font-weight: 700;">Recent Financial Activity</h3>
+          <span style="font-size: 0.8rem; color: var(--text-dim);">Updated in real-time</span>
+        </div>
+
+        <div class="table-responsive">
+          <table class="custom-table" aria-label="Transactions Ledger">
+            <thead>
+              <tr>
+                <th>Description</th>
+                <th>Type</th>
+                <th>Date</th>
+                <th>Amount</th>
+                <th>Status</th>
+              </tr>
+            </thead>
+            <tbody id="transactionsTableBody">
+              <!-- Dynamically populated via JS -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+    </section>
+
+  </main>
+
+  <!-- ======================================================================
+       ACCESSIBLE MODAL DIALOGS
+       ====================================================================== -->
+
+  <!-- 1. Send Proposal / Hire Creator Modal -->
+  <dialog class="modal-dialog" id="hireModal">
+    <div class="modal-content-panel">
+      <div class="modal-header">
+        <h3 class="modal-title">Employ Creator Services</h3>
+        <button type="button" class="modal-close-btn" data-close-modal="hireModal" aria-label="Close">✕</button>
+      </div>
+
+      <form id="hireCreatorForm">
+        <div class="form-group">
+          <label class="form-label" for="hireCreatorSelect">Select Creator</label>
+          <select id="hireCreatorSelect" class="form-select" required>
+            <!-- Populated via JS -->
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="hireCampaignTitle">Campaign / Project Title</label>
+          <input type="text" id="hireCampaignTitle" class="form-input" placeholder="e.g. 4K TikTok UGC Ad for Wireless Earbuds" required>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="hireDeliverablesText">Deliverables & Scope</label>
+          <textarea id="hireDeliverablesText" class="form-textarea" rows="3" placeholder="Describe the video format, hooks, required tags, and deliverables needed..." required></textarea>
+        </div>
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+          <div class="form-group">
+            <label class="form-label" for="hireBudgetAmount">Escrow Budget ($ USD)</label>
+            <input type="number" id="hireBudgetAmount" class="form-input" min="50" max="25000" placeholder="850" required>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="hireTargetDeadline">Target Delivery Date</label>
+            <input type="date" id="hireTargetDeadline" class="form-input" required>
+          </div>
+        </div>
+
+        <div style="padding: 0.85rem; background: rgba(14,21,38,0.7); border: 1px solid var(--border-subtle); border-radius: 8px; margin-bottom: 1.5rem; font-size: 0.8rem; color: #cbd5e1;">
+          <div style="display: flex; justify-content: space-between; margin-bottom: 0.25rem;">
+            <span>Escrow Protection:</span>
+            <strong style="color: var(--brand-emerald);">100% Protected</strong>
+          </div>
+          <p style="color: var(--text-dim); line-height: 1.4;">Funds are deposited securely and only released to the creator once you review and approve the finished deliverables.</p>
+        </div>
+
+        <div style="display: flex; justify-content: flex-end; gap: 0.75rem;">
+          <button type="button" class="btn btn-secondary" data-close-modal="hireModal">Cancel</button>
+          <button type="submit" class="btn btn-primary" id="btnSubmitProposal">
+            Fund Escrow & Send Proposal
+          </button>
+        </div>
+      </form>
+    </div>
+  </dialog>
+
+  <!-- 2. Tip Creator Modal -->
+  <dialog class="modal-dialog" id="tipModal">
+    <div class="modal-content-panel">
+      <div class="modal-header">
+        <h3 class="modal-title" id="tipModalTitle">Tip Creator</h3>
+        <button type="button" class="modal-close-btn" data-close-modal="tipModal" aria-label="Close">✕</button>
+      </div>
+
+      <form id="tipForm">
+        <input type="hidden" id="tipPostId" value="">
+        <input type="hidden" id="tipCreatorId" value="">
+
+        <p style="font-size: 0.885rem; color: var(--text-muted); margin-bottom: 1.25rem;">
+          Show appreciation for this drop and support independent creative work directly.
+        </p>
+
+        <!-- Quick Tip Amount Chips -->
+        <div class="tip-chips-row">
+          <button type="button" class="tip-chip" data-amount="5">$5</button>
+          <button type="button" class="tip-chip active" data-amount="15">$15</button>
+          <button type="button" class="tip-chip" data-amount="30">$30</button>
+          <button type="button" class="tip-chip" data-amount="50">$50</button>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="tipCustomAmount">Custom Amount ($ USD)</label>
+          <input type="number" id="tipCustomAmount" class="form-input" min="1" max="1000" value="15" required>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="tipNoteText">Add an optional message or feedback</label>
+          <input type="text" id="tipNoteText" class="form-input" placeholder="e.g. Loved the DaVinci color grading tips!">
+        </div>
+
+        <div style="display: flex; justify-content: flex-end; gap: 0.75rem; margin-top: 1.5rem;">
+          <button type="button" class="btn btn-secondary" data-close-modal="tipModal">Cancel</button>
+          <button type="submit" class="btn btn-emerald" id="btnConfirmSendTip">
+            Send Instant Tip
+          </button>
+        </div>
+      </form>
+    </div>
+  </dialog>
+
+  <!-- 3. Add Portfolio Item Modal -->
+  <dialog class="modal-dialog" id="portfolioModal">
+    <div class="modal-content-panel">
+      <div class="modal-header">
+        <h3 class="modal-title">Add Work to Portfolio</h3>
+        <button type="button" class="modal-close-btn" data-close-modal="portfolioModal" aria-label="Close">✕</button>
+      </div>
+
+      <form id="portfolioItemForm">
+        <div class="form-group">
+          <label class="form-label" for="portTitle">Project / Campaign Title</label>
+          <input type="text" id="portTitle" class="form-input" placeholder="e.g. Smart Watch Active Lifestyle Campaign" required>
+        </div>
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+          <div class="form-group">
+            <label class="form-label" for="portClient">Brand / Client Name</label>
+            <input type="text" id="portClient" class="form-input" placeholder="e.g. ChronoTech Labs" required>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="portCategory">Category</label>
+            <select id="portCategory" class="form-select" required>
+              <option value="UGC Video">UGC Video</option>
+              <option value="Photography">Photography</option>
+              <option value="Sponsored Reels">Sponsored Reels</option>
+              <option value="3D/Design">3D/Design</option>
+              <option value="Cinematic Video">Cinematic Video</option>
+            </select>
+          </div>
+        </div>
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 0.75rem;">
+          <div class="form-group">
+            <label class="form-label" for="portViews">Views / Reach</label>
+            <input type="text" id="portViews" class="form-input" placeholder="e.g. 1.4M">
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="portCtr">CTR</label>
+            <input type="text" id="portCtr" class="form-input" placeholder="e.g. 6.2%">
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="portRoas">ROAS</label>
+            <input type="text" id="portRoas" class="form-input" placeholder="e.g. 4.8x">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="portImage">Showcase Image URL</label>
+          <input type="url" id="portImage" class="form-input" placeholder="https://images.unsplash.com/..." value="https://images.unsplash.com/photo-1518455027359-f3f8164ba6bd?auto=format&fit=crop&w=800&q=80">
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="portDescription">Case Study Description</label>
+          <textarea id="portDescription" class="form-textarea" rows="3" placeholder="Explain the brief, execution strategy, and results achieved for the brand..." required></textarea>
+        </div>
+
+        <div style="display: flex; justify-content: flex-end; gap: 0.75rem; margin-top: 1.5rem;">
+          <button type="button" class="btn btn-secondary" data-close-modal="portfolioModal">Cancel</button>
+          <button type="submit" class="btn btn-primary">Save to Portfolio</button>
+        </div>
+      </form>
+    </div>
+  </dialog>
+
+  <!-- 4. Add Service Modal -->
+  <dialog class="modal-dialog" id="serviceModal">
+    <div class="modal-content-panel">
+      <div class="modal-header">
+        <h3 class="modal-title">Create New Service Package</h3>
+        <button type="button" class="modal-close-btn" data-close-modal="serviceModal" aria-label="Close">✕</button>
+      </div>
+
+      <form id="serviceItemForm">
+        <div class="form-group">
+          <label class="form-label" for="srvTitle">Service Package Title</label>
+          <input type="text" id="srvTitle" class="form-input" placeholder="e.g. 2x TikTok Video Hooks + Raw B-Roll" required>
+        </div>
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+          <div class="form-group">
+            <label class="form-label" for="srvPrice">Starting Price ($ USD)</label>
+            <input type="number" id="srvPrice" class="form-input" min="50" max="10000" placeholder="500" required>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="srvDays">Delivery Turnaround (Days)</label>
+            <input type="number" id="srvDays" class="form-input" min="1" max="60" placeholder="5" required>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="srvDesc">Package Description</label>
+          <textarea id="srvDesc" class="form-textarea" rows="2" placeholder="Explain what the brand receives with this order..." required></textarea>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="srvFeatures">Included Deliverables (one per line)</label>
+          <textarea id="srvFeatures" class="form-textarea" rows="3" placeholder="2x High-converting hooks&#10;Full 4K vertical editing&#10;30-day paid ad usage rights" required></textarea>
+        </div>
+
+        <div style="display: flex; justify-content: flex-end; gap: 0.75rem; margin-top: 1.5rem;">
+          <button type="button" class="btn btn-secondary" data-close-modal="serviceModal">Cancel</button>
+          <button type="submit" class="btn btn-primary">Add Package</button>
+        </div>
+      </form>
+    </div>
+  </dialog>
+
+  <!-- 5. Submit Deliverable Link Modal (For Creators) -->
+  <dialog class="modal-dialog" id="deliverableModal">
+    <div class="modal-content-panel">
+      <div class="modal-header">
+        <h3 class="modal-title">Submit Deliverables for Review</h3>
+        <button type="button" class="modal-close-btn" data-close-modal="deliverableModal" aria-label="Close">✕</button>
+      </div>
+
+      <form id="deliverableForm">
+        <input type="hidden" id="deliverableDealId" value="">
+
+        <p style="font-size: 0.885rem; color: var(--text-muted); margin-bottom: 1.25rem;">
+          Provide the cloud download or review link (Dropbox, Google Drive, Frame.io, or Vimeo) for the brand to review and release funds.
+        </p>
+
+        <div class="form-group">
+          <label class="form-label" for="deliverableUrlInput">Asset Delivery Link</label>
+          <input type="url" id="deliverableUrlInput" class="form-input" placeholder="https://drive.google.com/..." required>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="deliverableNotes">Notes for Brand Client</label>
+          <textarea id="deliverableNotes" class="form-textarea" rows="2" placeholder="e.g. Here are the 2 hook variations in ProRes 422 along with caption files..."></textarea>
+        </div>
+
+        <div style="display: flex; justify-content: flex-end; gap: 0.75rem; margin-top: 1.5rem;">
+          <button type="button" class="btn btn-secondary" data-close-modal="deliverableModal">Cancel</button>
+          <button type="submit" class="btn btn-primary">Submit for Brand Approval</button>
+        </div>
+      </form>
+    </div>
+  </dialog>
+
+  <!-- 6. Withdraw Funds Modal -->
+  <dialog class="modal-dialog" id="payoutModal">
+    <div class="modal-content-panel">
+      <div class="modal-header">
+        <h3 class="modal-title">Withdraw Available Earnings</h3>
+        <button type="button" class="modal-close-btn" data-close-modal="payoutModal" aria-label="Close">✕</button>
+      </div>
+
+      <form id="payoutForm">
+        <div style="padding: 1rem; background: rgba(16,185,129,0.1); border: 1px solid rgba(16,185,129,0.3); border-radius: 8px; margin-bottom: 1.25rem;">
+          <span style="font-size: 0.75rem; color: #a7f3d0; text-transform: uppercase; font-weight: 700;">Available to Payout</span>
+          <div style="font-family: var(--font-family-mono); font-size: 1.6rem; font-weight: 800; color: #ffffff;" id="payoutModalAvailableBal">$4,850.00</div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="payoutAmountInput">Withdrawal Amount ($ USD)</label>
+          <input type="number" id="payoutAmountInput" class="form-input" min="10" placeholder="1000" required>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="payoutMethodSelect">Payout Destination</label>
+          <select id="payoutMethodSelect" class="form-select">
+            <option value="Stripe Direct">Stripe Direct Deposit (Checking •••• 4891)</option>
+            <option value="PayPal">PayPal (elena.vance@creators.me)</option>
+            <option value="Wise Wire">Wise International Wire (EUR / USD)</option>
+          </select>
+        </div>
+
+        <div style="display: flex; justify-content: flex-end; gap: 0.75rem; margin-top: 1.5rem;">
+          <button type="button" class="btn btn-secondary" data-close-modal="payoutModal">Cancel</button>
+          <button type="submit" class="btn btn-emerald">Transfer to Account</button>
+        </div>
+      </form>
+    </div>
+  </dialog>
+
+  <!-- 7. Project Detail Inspection Modal -->
+  <dialog class="modal-dialog" id="projectDetailModal">
+    <div class="modal-content-panel" style="max-width: 680px;">
+      <div class="modal-header">
+        <div style="display: flex; flex-direction: column;">
+          <span id="detailProjectClient" style="font-size: 0.75rem; color: var(--brand-indigo); font-weight: 700; text-transform: uppercase;">CLIENT NAME</span>
+          <h3 class="modal-title" id="detailProjectTitle">Project Title</h3>
+        </div>
+        <button type="button" class="modal-close-btn" data-close-modal="projectDetailModal" aria-label="Close">✕</button>
+      </div>
+
+      <img id="detailProjectImage" src="" alt="Project Preview" style="width: 100%; max-height: 360px; object-fit: cover; border-radius: var(--radius-md); margin-bottom: 1.25rem;">
+
+      <div style="display: flex; gap: 1rem; margin-bottom: 1.25rem; flex-wrap: wrap;" id="detailProjectMetricsRow">
+        <!-- Metrics -->
+      </div>
+
+      <p id="detailProjectDescription" style="font-size: 0.95rem; color: #cbd5e1; line-height: 1.6; margin-bottom: 1.5rem;"></p>
+
+      <div style="display: flex; justify-content: flex-end; gap: 0.75rem;">
+        <button type="button" class="btn btn-secondary" data-close-modal="projectDetailModal">Close</button>
+        <button type="button" class="btn btn-primary" id="btnDetailBookSimilar">Book Similar Project</button>
+      </div>
+    </div>
+  </dialog>
+
+  <!-- ======================================================================
+       FLOATING TOAST NOTIFICATIONS
+       ====================================================================== -->
+  <div class="toast-container" id="toastContainer" aria-live="polite"></div>
+
+  <!-- ======================================================================
+       FOOTER
+       ====================================================================== -->
+  <footer class="app-footer">
+    <div class="footer-inner">
+      <div style="display: flex; align-items: center; gap: 0.75rem;">
+        <span style="font-size: 1.15rem; font-weight: 800; background: var(--primary-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">VERVE</span>
+        <span class="footer-copy">© 2026 Verve Creators Inc. Empowering the next generation of creative independence.</span>
+      </div>
+
+      <div style="display: flex; align-items: center; gap: 1rem;">
+        <button class="btn btn-secondary btn-sm" id="btnResetDemoData" title="Reset all creators, deals and wallet to default starter data">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="1 4 1 10 7 10"></polyline><path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"></path></svg>
+          Reset Demo Data
+        </button>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="js/data.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
